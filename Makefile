@@ -14,9 +14,11 @@ manifest_verificador.mf:
 	echo "Main-Class: conexion.Verificador" > manifest_verificador.mf
 
 build/conexion/Verificador.class: src/conexion/Verificador.java
+	mkdir -p build
 	javac -cp src/ src/conexion/Verificador.java -d build
 
 build/datos/Lectura.class: src/datos/Lectura.java
+	mkdir -p build
 	javac -cp src/ src/datos/Lectura.java -d build
 
 
@@ -30,9 +32,11 @@ manifest_reportero.mf:
 	echo "Main-Class: conexion.Reportero" > manifest_reportero.mf
 
 build/conexion/Reportero.class: src/conexion/Reportero.java
+	mkdir -p build
 	javac -cp src/ src/conexion/Reportero.java -d build
 
 build/datos/Reporte.class: src/datos/Reporte.java
+	mkdir -p build
 	javac -cp src/ src/datos/Reporte.java -d build
 
 
