@@ -24,8 +24,8 @@ build/datos/Lectura.class: src/datos/Lectura.java
 
 reportero: reportero.jar
 
-reportero.jar: manifest_reportero.mf build/conexion/Reportero.class build/datos/Reporte.class
-	jar cmf manifest_reportero.mf reportero.jar -C build conexion/Reportero.class -C build datos/Reporte.class
+reportero.jar: manifest_reportero.mf build/conexion/Reportero.class build/datos/Reporte.class build/datos/Lectura.class
+	jar cmf manifest_reportero.mf reportero.jar -C build conexion/Reportero.class -C build datos/Reporte.class -C build datos/Lectura.class
 	rm -rf manifest_reportero.mf
 
 manifest_reportero.mf:
@@ -38,7 +38,6 @@ build/conexion/Reportero.class: src/conexion/Reportero.java
 build/datos/Reporte.class: src/datos/Reporte.java
 	mkdir -p build
 	javac -cp src/ src/datos/Reporte.java -d build
-
 
 
 clean:
