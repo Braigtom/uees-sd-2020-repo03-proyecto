@@ -65,7 +65,7 @@ public class Reporte implements Serializable {
             bw.write("\t\"sensor\": \"" + sensor + "\",\n");
             bw.write("\t\"lectura_min\": " + lecturaMin + ",\n");
             bw.write("\t\"lectura_max\": " + lecturaMax + ",\n");
-            bw.write("\t\"lectura_med\": " + lecturaMed + ",\n");
+            bw.write("\t\"lectura_med\": " + lecturaMed + ",\n");    // aqui se ppne como se desea leer los archivos json el formato de lectura
             bw.write("\t\"lecturas\": [\n");
             for (HashMap datos : lecturas) {
                 bw.write("\t\t{\n");
