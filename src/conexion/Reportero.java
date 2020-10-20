@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class Reportero {
 
-    private static final int PUERTO = 9999;
+    private static final int PUERTO = 9999; // puerto de conexion
 
     private static int estado = 1;
 
@@ -28,7 +28,7 @@ public class Reportero {
             switch (estado) {
                 case 1:
                     try {
-                        System.out.println("Iniciando Reportero");
+                        System.out.println("Iniciando Reportero"); // incializacion del reportero
                         server = new ServerSocket(PUERTO);
                         estado = 2;
                     } catch (IOException ex) {
@@ -37,7 +37,7 @@ public class Reportero {
                 case 2:
                     try {
                         if (mostrarMensaje) {
-                            System.out.println("Esperando al Verificador...");
+                            System.out.println("Esperando al Verificador..."); // esperando la conexion con verificador
                         }
 
                         if (socket != null) {
@@ -98,7 +98,7 @@ public class Reportero {
                         System.out.println("Reporte -> " + Reporte.reportes.get(agente).get(sensor));
                         Reporte.reportes.get(agente).get(sensor).generarArchivo();
                     }
-                    Reporte.guardarReportes();
+                    Reporte.guardarReportes(); // se guardan los reportes ya leidos para que no existan archivos duplicados
                     estado = 2;
                     break;
                 default:
