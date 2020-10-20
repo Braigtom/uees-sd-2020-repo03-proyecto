@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 
 public class Verificador {
 
-    private static final String RUTA_DESCARTADOS = "descartados/";
+    private static final String RUTA_DESCARTADOS = "descartados/"; // se crea carpeta para archivos descartados que no son json
 
     private static String IP;
 
@@ -38,10 +38,10 @@ public class Verificador {
             }
         }
         if (args.length == 0) {
-            System.out.println("Necesita ingresar la dirección IP");
+            System.out.println("Necesita ingresar la dirección IP"); // aqui se introduce la direccion ip de la otra maquina para hacer la conexion
             System.out.println("'java -jar verificador.jar <IP>'");
         } else if (args.length > 1) {
-            System.out.println("¡Demasiados argumentos!");
+            System.out.println("¡Demasiados argumentos!"); // este es un mensaje de error por si no pone la direccion ip como es
             System.out.println("Para más información pruebe:\n'java -jar verificador.jar --help'");
         } else {
             if (args[0].equalsIgnoreCase("localhost")) {
@@ -52,7 +52,7 @@ public class Verificador {
                 IP = matcher.group();
                 for (String b : IP.split("\\.")) {
                     if (Integer.parseInt(b) > 255) {
-                        System.out.println("¡IP incorrecta!");
+                        System.out.println("¡IP incorrecta!"); // mensaje de error con ip erronea
                         return false;
                     }
                 }
@@ -64,7 +64,7 @@ public class Verificador {
         return false;
     }
 
-    private static void clienteVerificador() {
+    private static void clienteVerificador() {  // aqui se codifica lo que son los sockets que son para hacer la conexion de las maquinas virtuales
         Lectura.cargarLecturas();
         boolean mostrarMensajeError = true;
         boolean mostrarMensaje = true;
@@ -78,7 +78,7 @@ public class Verificador {
                         }
                         socket = new Socket(IP, PUERTO);
                         if (mostrarMensaje) {
-                            System.out.println("Conectado con el Reportero");
+                            System.out.println("Conectado con el Reportero"); // se realiza la conexion exitosa
                             mostrarMensaje = false;
                         }
                         mostrarMensajeError = true;
@@ -88,7 +88,7 @@ public class Verificador {
                         if (mostrarMensajeError) {
                             mostrarMensajeError = false;
                             mostrarMensaje = true;
-                            System.out.println("Esperando al Reportero...");
+                            System.out.println("Esperando al Reportero..."); // esperando la respuesta del reportero
                         }
                     }
                     break;
@@ -102,7 +102,7 @@ public class Verificador {
                         comprobar.writeBoolean(false);
                     } catch (IOException ex) {
                         estado = 1;
-                        System.out.println("Conexión perdida con el Reportero");
+                        System.out.println("Conexión perdida con el Reportero"); // mensaje de error cuando se pierde la conexion
                         continue;
                     }
 
@@ -122,7 +122,7 @@ public class Verificador {
                             try {
                                 lectura = Lectura.cargarArchivo(nombreArchivo);
                             } catch (IllegalStateException ex) {
-                                System.out.println("Error de lectura");
+                                System.out.println("Error de lectura");  // se crea lo que es la carpeta archivos q es donde se ponen manualmente los json para su lectura
                                 estado = 1;
                                 continue;
                             }
@@ -171,7 +171,7 @@ public class Verificador {
         fichero.delete();
     }
 
-    private static void descartarArchivo(String nombreArchivo) {
+    private static void descartarArchivo(String nombreArchivo) { // aqui esta el metodo de archivos que no son formato json los manda a otra carpeta llamada descartados
 
         if (Files.notExists(Paths.get(RUTA_DESCARTADOS))) {
             try {
