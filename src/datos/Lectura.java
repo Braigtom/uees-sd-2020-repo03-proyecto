@@ -72,7 +72,7 @@ public class Lectura implements Serializable {
         } catch (FileNotFoundException ex) {
             System.out.println("El archivo no existe o ha sido eliminado manualmente");
         } catch (IOException ex) {
-            System.out.println("Error al abrir el archivo");
+            System.out.println("Error al abrir el archivo"); // errores que pueden suceder 
         }
 
         return new Lectura(agente, fecha, sensores);
